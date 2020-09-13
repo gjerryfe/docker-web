@@ -1,5 +1,5 @@
-FROM php:5.6-fpm-jessie
-#FROM php:5.6-fpm
+#FROM php:5.6-fpm-jessie
+FROM php:5.6-fpm
 
 RUN echo -e "Acquire::http::Proxy \"http://10.0.0.136:8118\";" >> /etc/apt.conf
 

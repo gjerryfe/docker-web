@@ -12,3 +12,12 @@ RUN rm -r /data/src/redis.tar.gz
 RUN mkdir -p /usr/src/php/ext
 RUN mv phpredis-3.1.3 /usr/src/php/ext/redis
 RUN docker-php-ext-install redis
+RUN chmod 777 -R /tmp && chmod o+t -R /tmp
+
+RUN apt-get install -y unzip
+COPY protoc-3.12.3-linux-x86_64.zip /tmp
+RUN unzip /tmp/protoc-3.12.3-linux-x86_64.zip -d /tmp/protoc-3.12.3
+RUN mv /tmp/protoc-3.12.3/bin/protoc /usr/local/bin/protoc
+RUN mv /tmp/protoc-3.12.3/include/google /usr/local/include/
+RUN pecl install grpc
+RUN pecl install protobuf
