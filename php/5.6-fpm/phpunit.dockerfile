@@ -21,6 +21,9 @@ RUN docker-php-ext-install -j$(nproc) \
 
 COPY --from=composer:1.8 /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_HOME /data/web/.composer
+
+RUN apt-get install -y cron
+
 #COPY php/php.ini /usr/local/etc/php/
 
 #RUN apt-get install -y unzip
